@@ -1,0 +1,22 @@
+Service Information
+service: notes-api
+stage: prod
+region: eu-west-1
+stack: notes-api-prod
+resources: 32
+api keys:
+  None
+endpoints:
+  POST - https://7c3kyqlpri.execute-api.eu-west-1.amazonaws.com/prod/notes
+  GET - https://7c3kyqlpri.execute-api.eu-west-1.amazonaws.com/prod/notes/{id}
+  GET - https://7c3kyqlpri.execute-api.eu-west-1.amazonaws.com/prod/notes
+  PUT - https://7c3kyqlpri.execute-api.eu-west-1.amazonaws.com/prod/notes/{id}
+  DELETE - https://7c3kyqlpri.execute-api.eu-west-1.amazonaws.com/prod/notes/{id}
+functions:
+  create: notes-api-prod-create
+  get: notes-api-prod-get
+  list: notes-api-prod-list
+  update: notes-api-prod-update
+  delete: notes-api-prod-delete
+layers:
+  None
