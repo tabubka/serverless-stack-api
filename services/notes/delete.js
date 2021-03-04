@@ -4,17 +4,14 @@ import dynamoDb from "./libs/dynamodb-lib";
 export const main = handler(async (event, context) => {
   const params = {
     TableName: process.env.tableName,
-    // 'Key' defines the partition key and sort key of the item to be retrieved
+    // 'Key' defines the partition key and sort key of the item to be removed
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId, // The id of the author
-      noteId: "570ea090-7b3d-11eb-9b4c-496c77a490e7",
+      noteId: event.pathParameters.id, // The id of the note from the path
     },
   };
 
-  const result = await dynamoDb.get(params);
-  if (!result.Item) {
-    throw new Error("Item not found.");
-  }
+  await dynamoDb.delete(params);
 
-  return result.Item;
+  return { status: true };
 });
